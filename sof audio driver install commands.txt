@@ -1,0 +1,52 @@
+
+## https://itsfoss.com/vlc-is-unable-to-open-the-mrl/
+
+cd ~/Downloads
+wget https://raw.githubusercontent.com/videolan/vlc/master/share/lua/playlist/youtube.lua
+
+ls -alh /usr/lib/x86_64-linux-gnu/vlc/lua/playlist/youtube.luac
+sudo cp ~/Downloads/youtube.lua /usr/lib/x86_64-linux-gnu/vlc/lua/playlist/youtube.luac
+
+
+
+cd ~/Downloads
+### https://github.com/thesofproject/sof-bin
+wget https://github.com/thesofproject/sof-bin/archive/refs/heads/main.zip
+mv ./main.zip ./sof-bin-main.zip
+unzip ./sof-bin-main.zip
+
+mkdir sof-backup
+mkdir-sof-backup-new
+sudo mv /lib/firmware/intel/sof* ~/Downloads/sof-backup/
+sudo mv /usr/local/bin/sof-*     ~/Downloads/sof-backup-new/ # optional
+
+cd ~/Downloads/sof-bin-main
+sudo ./install.sh v1.8.x/v1.8-rc2
+
+## https://github.com/thesofproject/sof/issues/3868
+
+## Does the workaround mentioned earlier work for you: add this to /etc/modprobe.d/alsa-base.conf
+
+## options snd_sof sof_debug=1
+
+## https://askubuntu.com/questions/103643/cannot-echo-hello-x-txt-even-with-sudo
+## https://techoverflow.net/2019/03/16/how-to-solve-permission-denied-error-when-trying-to-echo-into-a-file/
+
+## sudo bash -c 'now=$(date)'
+sudo bash -c 'echo "## $(date)"  >> /etc/modprobe.d/alsa-base.conf'
+sudo bash -c 'echo "## https://github.com/thesofproject/sof/issues/3868" >> /etc/modprobe.d/alsa-base.conf'
+sudo bash -c 'echo "## Does the workaround mentioned earlier work for you: add this to /etc/modprobe.d/alsa-base.conf" >> /etc/modprobe.d/alsa-base.conf'
+sudo bash -c 'echo "options snd_sof sof_debug=1" >> /etc/modprobe.d/alsa-base.conf'
+
+
+
+
+## https://github.com/thesofproject/sof/issues/3868
+### Does the workaround mentioned earlier work for you: add this to /etc/modprobe.d/alsa-base.conf
+## 20220130 - NS
+
+## options snd_sof sof_debug=1
+
+
+
+
